@@ -1,0 +1,57 @@
+
+.login_body {
+    /* 设置所有直接子元素align-self */
+    align-items: center;
+    background-color: var(--white);
+    background: url("https://liwj253-img.oss-cn-beijing.aliyuncs.com/CranborneChase_ZH-CN0337426199_1920x1080.jpg");
+    /* 决定背景图像的位置是在视口内固定，或者随着包含它的区块滚动。 */
+    background-attachment: fixed;
+    /* 背景图片位置 */
+    background-position: center;
+    /* 背景图片是否重复 */
+    background-repeat: no-repeat;
+    /*  */
+    background-size: cover;
+    display: grid;
+    height: 100vh;
+    place-items: center;
+}
+
+.login_container{
+    text-align: center; /*让div内部文字居中*/
+	background-color: #fff;
+	border-radius: 20px;
+	width: 50vw;
+	height: 60vh;
+	margin: 5vh,5vh;
+	position: absolute;
+    opacity: 0.8;
+}
+
+.login_container_div_left{
+    float: left;
+    background-color: rgb(44, 20, 20); 
+    background-image: url("https://liwj253-img.oss-cn-beijing.aliyuncs.com/4.jpg");
+    background-size: cover;
+    width:  50%;
+    height: 100%;
+    margin: 0;
+    opacity: 1;
+}
+
+.login_container_div_right{
+    text-align: center;
+    /* 子元素div浮动方式排布 */
+    display:flex;
+    /* 上下排布 */
+    flex-direction: column;
+    /* 子元素居中对齐 */
+    justify-content: center;
+}
+
+.login_input_item{
+    text-align: center;
+    margin: 15% 15%;
+    width:60%;
+    height:10%;
+}
