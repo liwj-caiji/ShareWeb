@@ -9,23 +9,23 @@
             <form action="" method="post">
                 {% csrf_token %}
                 <div class="register_input_item">
-                    <input type="text" name="username" value="{{ username }}"placeholder="用户名">
-                    <span>{{ username_error }}</span>
+                    {{form.user_name}}
+                    <!-- <input type="text" name="user_name" value="{{ user_name }}"placeholder="用户名"> -->
                 </div>
 
                 <div class="register_input_item">
-                    <input type="text" name="username" value="{{ username }}"placeholder="用户账号">
-                    <span>{{ username_error }}</span>
+                    {{form.user_account}}
+                    <!-- <input type="text" name="user_account" value="{{ user_account }}"placeholder="用户账号"> -->
                 </div>
                 
                 <div class="register_input_item">
-                    <input type="password" name="password_1" value="{{ password_1 }}" placeholder="密码">
-                    <span> {{ password_1_error }} </span>
+                    {{form.password}}
+                    <!-- <input type="password" name="password" value="{{ password }}" placeholder="密码"> -->
                 </div>
                  
                 <div class="register_input_item">
-                    <input type="password" name="password_2" value="{{ password_2 }}" placeholder="确认密码">
-                    <span> {{ password_2_error }} </span>
+                    {{form.password_confirm}}
+                    <!-- <input type="password" name="password_confirm" value="{{ password_confirm }}" placeholder="确认密码"> -->
                 </div>
                 <br>
                 <p>{{error}}</p>
