@@ -52,11 +52,12 @@ def Login(request):
             return render(request,'user/user_login.html', locals())
 
 
-        request.session['user_name'] = cur_user_name
+        
         response = HttpResponseRedirect("/user/info")
         #getlist获取checkbox的内容
         #勾选了则可以获取到remeber的值为on
         if 'on' in request.POST.getlist('remeber'):
+            request.session['user_name'] = cur_user_name
             response.set_cookie('user_name',cur_user_name,60*60)
     
         return response

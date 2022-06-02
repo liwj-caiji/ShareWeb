@@ -1,6 +1,6 @@
 from distutils.log import error
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.template import loader 
 from django import forms
 
@@ -8,6 +8,7 @@ from django.contrib.auth.hashers import make_password, check_password
 from rsa import encrypt
 
 from .. import models
+from . import Login
 
 class Register_Form(forms.Form):
     user_name = forms.CharField(label="用户名", min_length=3, max_length=10,widget=forms.TextInput(attrs={'placeholder':"用户名"}))
@@ -47,6 +48,7 @@ def Register(request):
             return render(request, "user/user_register.html", locals())
         except Exception as e:
             new_user = models.My_User.objects.create( user_name = reg_user_name, user_account = reg_user_account, password = encrypt_password )
-            return render(request, "user/user_login.html" )
+            form = Login.Login_Form()
+            return redirect("/user/login")
 
         
