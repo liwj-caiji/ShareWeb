@@ -7,12 +7,9 @@ from django.contrib.auth.hashers import make_password, check_password
 from rsa import encrypt
 
 from .. import models
+from .. import user_forms
 
-class Login_Form(forms.Form):
-    user_name = forms.CharField(label="用户名", min_length=3, max_length=10,widget=forms.TextInput(attrs={'placeholder':"用户名"}))
-    user_account = forms.CharField(label="用户账号", min_length=3, max_length=10,widget=forms.TextInput(attrs={'placeholder':"用户账号"}))
-    password = forms.CharField(label="密码", min_length=6, max_length=10,widget=forms.TextInput(attrs={'placeholder':"密码",'type':"password"}))
-    remeber = forms.BooleanField(required=None)
+
 
 def Login(request):
 
@@ -26,11 +23,11 @@ def Login(request):
         if 'user_name' in request.COOKIES:
             request.session['user_name'] = request.COOKIES['user_name']
             return render(request,"test.html")
-        form = Login_Form()
+        form = user_forms.Login_Form()
         return render(request, "user/user_login.html", locals())
 
     elif(request.method) == 'POST':
-        form = Login_Form(request.POST)
+        form = user_forms.Login_Form(request.POST)
         
         if not form.is_valid():
             return HttpResponse("提交的信息有误")
