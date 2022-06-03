@@ -4,7 +4,7 @@ from django.template import loader
 
 from django.contrib.auth.hashers import check_password
 
-from .. import models
+from user.models import *
 from .. import user_forms
 
 
@@ -31,7 +31,7 @@ def Login(request):
 
         cur_user_account = form.cleaned_data['user_account']
         cur_raw_password = form.cleaned_data['password']
-        cur_user = models.My_User.objects.filter(user_account=cur_user_account)
+        cur_user = My_User.objects.filter(user_account=cur_user_account)
 
         if not cur_user:
             error = '当前用户不存在或密码错误'

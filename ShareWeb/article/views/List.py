@@ -21,4 +21,4 @@ def article_List(request):
     # context = { 'articles': articles, 'order': order }
 
     # return render(request, 'article/list.html', context)
-    pass
+    return HttpResponse("成功")

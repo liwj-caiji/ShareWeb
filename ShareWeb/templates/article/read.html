@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% load static %}
+{% block title %} 写文章 {% endblock title %}
+{% block content %}
+
+<div>
+    <h2>{{%article.title%}}</h2>
+    <h3>{{%article.author_name%}}</h3>
+    <p>{{%article.body%}}</p>
+    <span>{{%article.created_time%}</span>
+    
+</div>
+
+{% endblock content %}

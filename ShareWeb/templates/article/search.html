@@ -11,6 +11,12 @@
         {{form}}
         <!-- 提交按钮 -->
         <button type="submit">搜索</button>
+        <br>
+        {{error}}
+        {% if search_result %}
+        <p>搜索结果</p>
+        {{search_result}}
+        {% endif %}
     </form>
 </div>
 {% endblock content %}
