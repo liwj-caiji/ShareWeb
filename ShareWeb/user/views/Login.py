@@ -1,10 +1,8 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader 
-from django import forms
 
-from django.contrib.auth.hashers import make_password, check_password
-from rsa import encrypt
+from django.contrib.auth.hashers import check_password
 
 from .. import models
 from .. import user_forms
@@ -12,7 +10,6 @@ from .. import user_forms
 
 
 def Login(request):
-
     #当第一次访问时,method为GET
     if (request.method) == 'GET':
         #如果不是第一次登录，在服务器端session有记录
@@ -47,14 +44,15 @@ def Login(request):
         if not check_password(cur_raw_password,encrypt_password):
             error = '当前用户不存在或密码错误'
             return render(request,'user/user_login.html', locals())
-
-
         
         response = HttpResponseRedirect("/user/info")
         #getlist获取checkbox的内容
         #勾选了则可以获取到remeber的值为on
         if 'on' in request.POST.getlist('remeber'):
-            request.session['user_name'] = cur_user_name
             response.set_cookie('user_name',cur_user_name,60*60)
+            
+        print(request.COOKIES.get('user_name'))
+        request.session['user_name'] = cur_user_name
     
         return response
+
