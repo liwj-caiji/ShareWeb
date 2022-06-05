@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader 
+from django.urls import reverse
 
 from django.contrib.auth.hashers import check_password
 
@@ -45,14 +46,14 @@ def Login(request):
             error = '当前用户不存在或密码错误'
             return render(request,'user/user_login.html', locals())
         
-        response = HttpResponseRedirect("/user/info")
+        # response = HttpResponseRedirect("/user/info")
         #getlist获取checkbox的内容
         #勾选了则可以获取到remeber的值为on
         if 'on' in request.POST.getlist('remeber'):
-            response.set_cookie('user_name',cur_user_name,60*60)
+            request.set_cookie('user_name',cur_user_name,60*60)
             
         print(request.COOKIES.get('user_name'))
         request.session['user_name'] = cur_user_name
     
-        return response
+        return redirect(reverse('user_info'))
 

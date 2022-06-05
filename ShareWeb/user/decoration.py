@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 
 
@@ -9,5 +9,15 @@ def check_login(func):
         if user_name:
             return func( request, *args, **kwargs)
         else:
+            return redirect(reverse("user_login"))
+    return fun
+
+def check_login_modify(func):
+    def fun( request, article_author, article_title, *args, **kwargs):
+        user_name = request.session.get("user_name")
+        if user_name == article_author:
+            return func( request,article_author, article_title, *args, **kwargs)
+        else:
+            print('redirect')
             return redirect(reverse("user_login"))
     return fun

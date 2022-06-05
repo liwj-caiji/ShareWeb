@@ -8,8 +8,6 @@ from article.models import *
 from .. import article_forms
 
 def article_Search(request):
-    print("?")
-    print(request.method)
     if  request.method == "GET":
         form = article_forms.Article_Search_Form()
         return render(request,"article/search.html",locals())

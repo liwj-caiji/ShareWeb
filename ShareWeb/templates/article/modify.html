@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% load static %}
+{% block title %} 修改文章 {% endblock title %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <!-- 提交文章的表单 -->
+            <form method="post" action="">
+                <!-- Django中需要POST数据的地方都必须有csrf_token -->
+                {% csrf_token %}
+                <!-- 文章标题 -->
+                <input type="text" name="title" placeholder="标题" maxlength="30" required id="id_title", value="{{article.title}}">
+                <!-- 文章正文 -->
+                <textarea name="body" cols="40" rows="10" required id="id_body">{{article.body}}</textarea>
+                <!-- 提交按钮 -->
+                <button type="submit" class="btn btn-primary">修改</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
