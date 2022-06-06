@@ -1,4 +1,3 @@
-from distutils.log import error
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -6,20 +5,19 @@ from django.template import loader
 from django import forms
 
 from django.contrib.auth.hashers import make_password, check_password
-from rsa import encrypt
 
 from user.models import *
+from user.user_forms import *
 from . import Login
-from .. import user_forms
 
 
 def Register(request):
     #请求页面返回注册表单
     if request.method == "GET":
-        form = user_forms.Register_Form()
+        form = Register_Form()
         return render(request, "user/user_register.html", locals())
     elif request.method == "POST":
-        form = user_forms.Register_Form(request.POST)
+        form = Register_Form(request.POST)
         #判断输入数据是否合理
         if not form.is_valid():
             error = "输入的信息有误"
@@ -54,7 +52,7 @@ def Register(request):
         except Exception as e:
         #用户名和用户账号都可用则创建用户，重定向到登陆界面
             new_user = My_User.objects.create( user_name = reg_user_name, user_account = reg_user_account, password = encrypt_password )
-            form = user_forms.Login_Form()
+            form = Login_Form()
             return redirect(reverse("user_login"))
 
         

@@ -2,7 +2,7 @@ from django.urls import path,include
 from django.conf.urls.static import static
 
 
-from .views import Info,Login,Logout,Register
+from .views import Info,Login,Logout,Register,Modify
 
 
 urlpatterns = [ 
@@ -11,4 +11,5 @@ urlpatterns = [
     path('login/',Login.Login,name='user_login'),
     path('logout/',Logout.Logout,name='user_logout'),
     path('register/',Register.Register,name='user_register'),
+    path('modify/',Modify.Modify,name='user_modify'),
     path('article/',include('article.urls')),] 
