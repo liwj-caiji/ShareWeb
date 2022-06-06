@@ -1,3 +1,4 @@
+from distutils.command import upload
 from django.db import models
 
 # Create your models here.
@@ -8,3 +9,8 @@ class My_User(models.Model):
     create_time  = models.DateTimeField( auto_now_add=True)#第一次创建的时间
     def __str__(self):
         return self.user_name
+
+class My_image(models.Model):
+    avatar_image = models.ImageField(upload_to="images/avatar")
+    background_image = models.ImageField(upload_to="images/background")
+    user = models.OneToOneField( My_User, on_delete=models.CASCADE)
