@@ -16,3 +16,12 @@
 
 5. form表单POST后回到/目录
 - 解决方法 : 将form中的action从"."改为""
+
+6. url路径不匹配 和 函数缺少参数
+- 解决方法 : urls.py中的path路径最后缺少个/  查看匹配变量名是否一致
+
+7. mysql : Can't connect to MySQL server on 'localhost'
+解决方法 : Win 搜索 服务, 打开MySQL服务
+
+8. Could not parse the remainder: '/article.title' from 'article.author_name/article.title'
+解决方法 : {% url ' url_name' }中传参数时需要以空格分开, {% url 'article_read' article.author_name  article.title %}这样向url中传入两个参数,形式为article_read/article.author_name/article.title/
