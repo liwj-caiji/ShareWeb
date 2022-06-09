@@ -1,10 +1,89 @@
-ul{
-    list-style-type: none; 
-    margin:0;
-    padding:0;
-    overflow:hidden;
+/* 整个导航栏 */
+/* 左侧logo 右侧导航选项 */
+.header{
+    position:absolute;
+    width: 100vw;
+    height: 10vh;
+    /* background-color: rgb(164, 206, 222); */
+
+    margin-top: 0;
+    
+    opacity: 0.8;
 }
 
+/* logo部分占左侧的一半 */
+.logo{
+    float:left;
+    width:20vw;
+    height:10vh;
+    /* padding:0 15px 0 15px;
+    line-height: 8vh; */
+}
+
+
+.nav{
+    float: left;
+    margin-top: 0;
+    width:78vw;
+    height:10vh;
+    /* width: 100%;
+    overflow: hidden;
+    height: 8vh;
+    margin: 0 auto;
+    border-bottom: 2px solid #0266A3; */
+}
+
+.search_div{
+    float: left;
+    height: 10vh;
+    margin: 0;
+    margin-left: 30vw;
+}
+.search_input{
+    position: relative;
+    top:26%; 
+    opacity: 0.5;
+}
+
+#but1{
+    opacity: 0.5;
+    position:absolute;
+    border: 0;
+    margin-top: 3vh;
+}
+
+.a_div{
+    float: right;
+    text-align: center;
+    vertical-align: middle;
+    width: 10vw;
+    height: 10vh;
+    /* padding: 2vh 2vw 2vh 2vw; */
+    /* 上右下左 */
+    margin: 0;
+}
+.a_div a{
+    display: block;
+    margin-top: 2.5vh;
+    text-decoration: none;
+    opacity: 0.8; 
+    color:rgb(248, 246, 246);
+}
+
+.a_div a:visited{
+    color:rgb(248, 246, 246);
+}
+ 
+/* 
+.nav li{
+    float: right;
+    width: 10%;
+    padding:0 15px 0 15px;
+    line-height: 8vh;
+    font-size: 16px;
+    color: aqua;
+}  */
+/*  
 li{
     float: left;
 }
@@ -24,4 +103,4 @@ li{
 .nav_a:hover,.nav_a:active{
     background-color: #e6e6e6;
 } 
-
+*/

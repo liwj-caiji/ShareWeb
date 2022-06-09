@@ -11,6 +11,6 @@ class My_User(models.Model):
         return self.user_name
 
 class My_image(models.Model):
-    avatar_image = models.ImageField(upload_to="images/avatar")
-    background_image = models.ImageField(upload_to="images/background")
+    avatar_image = models.ImageField(upload_to="images/avatar" ,default="images/icon/logo1.png")
+    background_image = models.ImageField(upload_to="images/background" ,default="images/icon/logo2.png")
     user = models.OneToOneField( My_User, on_delete=models.CASCADE)

@@ -1,0 +1,53 @@
+.info-body{
+    align-items: center;
+    display: grid;
+    height: 100vh;
+    place-items: center;
+}
+.info-container{
+    text-align: center; /*让div内部文字居中*/
+	background-color: #fff;
+	border-radius: 20px;
+	width: 70vw;
+	height: 70vh;
+	margin: 5vh,5vh;
+	position: absolute;
+    opacity: 1;
+}
+
+.avatar-div{
+    background-color: black;
+    position: absolute;
+    display: block;
+    margin-top: 5vh;
+    margin-left: 3vw;
+    width: 15vw;
+    height: 15vh;
+}
+
+.info-div{
+    text-align: center;
+    position: absolute;
+    background-color: rgb(154, 148, 148);
+    width: 15vw;
+    height:  30vh;
+    margin-top: 35vh;
+    margin-left: 3vw;
+}
+
+.info-item{
+    margin-top: 3vh ;
+    width: 15vw;
+    height:  5vh;
+}
+
+.info-content{
+    /* float:left; */
+    position: absolute;
+    width:  40vw;
+    height: 60vh;
+    background-color: aqua;
+    margin-left: 25vw;
+    margin-top: 5vh;
+}
+

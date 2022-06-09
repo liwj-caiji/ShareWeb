@@ -17,6 +17,12 @@ def Info(request):
     try:
         cur_user = My_User.objects.get(user_name=cur_user_name)
         cur_user_account = cur_user.user_account
+        cur_user_images_list = My_image.objects.filter(user=cur_user)
+        print('here')
+        if cur_user_images_list:
+            cur_user_images = cur_user_images_list[0]
+        else:
+            cur_user_images = None
         return render(request,'user/user_info.html',locals()) 
     except Exception as e:
         return HttpResponse("当前用户信息不存在")

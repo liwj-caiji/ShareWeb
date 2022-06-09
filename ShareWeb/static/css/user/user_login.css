@@ -2,14 +2,13 @@
 .login_body {
     /* 设置所有直接子元素align-self */
     align-items: center;
-    background-color: var(--white);
-    background: url("https://liwj253-img.oss-cn-beijing.aliyuncs.com/CranborneChase_ZH-CN0337426199_1920x1080.jpg");
+    /* background: url("https://liwj253-img.oss-cn-beijing.aliyuncs.com/CranborneChase_ZH-CN0337426199_1920x1080.jpg"); */
     /* 决定背景图像的位置是在视口内固定，或者随着包含它的区块滚动。 */
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     /* 背景图片位置 */
-    background-position: center;
+    /* background-position: center; */
     /* 背景图片是否重复 */
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     /*  */
     background-size: cover;
     display: grid;
@@ -22,7 +21,7 @@
 	background-color: #fff;
 	border-radius: 20px;
 	width: 50vw;
-	height: 60vh;
+	height: 50vh;
 	margin: 5vh,5vh;
 	position: absolute;
     opacity: 0.8;
@@ -30,13 +29,13 @@
 
 .login_container_div_left{
     float: left;
-    background-color: rgb(44, 20, 20); 
+    /* background-color: rgb(44, 20, 20);  */
     background-image: url("https://liwj253-img.oss-cn-beijing.aliyuncs.com/4.jpg");
     background-size: cover;
-    width:  50%;
+    width:  60%;
     height: 100%;
     margin: 0;
-    opacity: 1;
+    opacity: 0.8;
 }
 
 .login_container_div_right{

@@ -1,0 +1,19 @@
+.footer{
+    position: absolute;
+    text-align: center;
+    width: 100vw;
+    bottom: 0%;
+    opacity: 0.8;
+}
+
+.footer_a{
+    color:black;
+    /* display: block; */
+    margin-top: 2.5vh;
+    text-decoration: none;
+    opacity: 0.8; 
+}
+
+.footer_a a:visited{
+    color:black;
+}
