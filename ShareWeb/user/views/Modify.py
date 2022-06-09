@@ -65,10 +65,11 @@ def Modify(request):
                 os.remove(delete_path)
                 user_image.background_image = background_image
             user_image.save()
-            return HttpResponse("修改成功")
+            print("修改用户信息成功")
+            return redirect(reverse('user_info'))
         except Exception as e:
             user_image = My_image.objects.create(avatar_image = avatar_image,background_image = background_image,user=cur_user)
-            return HttpResponse("上传成功")
+            return redirect(reverse('user_info'))
         return HttpResponse("结束")
 
 

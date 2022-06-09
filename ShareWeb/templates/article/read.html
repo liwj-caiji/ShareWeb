@@ -2,11 +2,13 @@
 {% block title %} 写文章 {% endblock title %}
 {% block content %}
 
-<div>
-    <h2>{{article.title}}</h2>
-    <h3>{{article.author_name}}</h3>
-    <p>{{article.body}}</p>
+<div class="read-div">
+    <h1 >{{article.title}}</h1>
+    <h2  style="display: inline-block;">{{article.author_name}}</h2>
     <span>{{article.created_time}}</span>   
+    
+    <p>{{article.body}}</p>
+       
 </div>
 
 {% endblock content %}

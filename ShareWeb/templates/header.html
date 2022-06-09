@@ -7,10 +7,10 @@
   
         
     <div class="nav">
-        <form action="/user" class="search_div">
+        <!-- <form action="/user" class="search_div">
             <input class="search_input" type="text">
             <button type="submit" id="but1" >搜索</button>
-        </form> 
+        </form>  -->
         
         <div class="a_div"><a href="https://github.com/liwj-caiji/ShareWeb" target="_blank">关于</a></div>
         {% if request.session.user_name %}
@@ -19,7 +19,7 @@
         <div class="a_div"><a href="{% url 'user_login' %}" target="_blank">登录</a></div>
         {% endif %}
         <div class="a_div"><a href="{% url 'user_info' %}" target="_blank">首页</a></div>
-        <div class="a_div"><a href="" target="_blank"></a></div>
+        <div class="a_div"><a href="{% url 'article_search' %}" target="_blank">搜索</a></div>
 
          <!-- <ul>
             <li><a class="header_a" href="">首页</a></li>

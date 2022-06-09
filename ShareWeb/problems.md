@@ -25,3 +25,6 @@
 
 8. Could not parse the remainder: '/article.title' from 'article.author_name/article.title'
 解决方法 : {% url ' url_name' }中传参数时需要以空格分开, {% url 'article_read' article.author_name  article.title %}这样向url中传入两个参数,形式为article_read/article.author_name/article.title/
+
+9. 搜索页面的header处超链接无法点击
+解决办法 : 更改search-body的大小，无法点击是search-body覆盖了header

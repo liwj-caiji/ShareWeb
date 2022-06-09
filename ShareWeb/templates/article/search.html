@@ -1,22 +1,45 @@
 <!-- extends表明此页面继承自 base.html 文件 -->
 {% extends "base.html" %} {% load static %}
 <!-- 写入 base.html 中定义的 title -->
-{% block title %} 写文章 {% endblock title %}
+{% block title %} 搜索 {% endblock title %}
 <!-- 写入 base.html 中定义的 content -->
 {% block content %}
 
 <div>
-    <form method="post" action="">
-        {% csrf_token %}
-        {{form}}
-        <!-- 提交按钮 -->
-        <button type="submit">搜索</button>
-        <br>
-        {{error}}
-        {% if search_result %}
-        <p>搜索结果</p>
-        {{search_result}}
-        {% endif %}
-    </form>
+    <div class="search-body">
+        <div class="search-container">
+            <div class="search-div-left">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    搜索内容
+                    {{form.search_content}}
+                    <!-- 提交按钮 -->
+                    <br>
+                    类别&ensp;&ensp;&emsp;
+                    {{form.search_type}}
+                    <button type="submit">搜索</button>
+                    <br>
+                    {{error}}
+
+                </form>
+            </div>
+            <div class="search-div-right">
+                搜索结果
+                {% if search_result_list %}
+
+                {% for article in search_result_list%}
+                <div class="result-item">
+                    <div class="result-item-ele">
+                        <a  class="result-a" href="{% url 'article_read' article.author_name article.title %}  ">{{article.title}}</a>
+                    </div>
+                    <div class=result-item-ele>
+                        author {{article.author_name}}
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock content %}

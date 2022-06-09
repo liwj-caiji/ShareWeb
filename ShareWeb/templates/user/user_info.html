@@ -26,7 +26,7 @@
             </div>
             {%for article in cur_user_article_list%}
             <div class="info-content-item">
-                <a href="{% url 'article_read' cur_user_name article.title %}  ">{{article.title}}</a>
+                <a class="info-a" href="{% url 'article_read' cur_user_name article.title %}  ">{{article.title}}</a>
             </div>
             {% endfor%}
             <div class="info-content-item">

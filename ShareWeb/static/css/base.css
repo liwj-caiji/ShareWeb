@@ -1,6 +1,7 @@
 @import url("header.css");
 @import url("footer.css");
 @import url("user/user.css");
+@import url("article/article.css");
 
 /* 设置body跟边界不留空白 */
 body{

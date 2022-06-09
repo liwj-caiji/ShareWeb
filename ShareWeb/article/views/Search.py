@@ -19,10 +19,10 @@ def article_Search(request):
         search_type = form.cleaned_data['search_type']
         search_content = form.cleaned_data['search_content']
         if search_type == "article_title":
-            search_result = My_Article.objects.filter(title__icontains=search_content)
-            return render(request, 'artilce/search.html', locals())
+            search_result_list = My_Article.objects.filter(title__icontains=search_content)
+            return render(request, 'article/search.html', locals())
         elif search_type == "article_author":
-            search_result = My_Article.objects.filter(author_name=search_content)
+            search_result_list = My_Article.objects.filter(author_name=search_content)
         print(form.cleaned_data)
         return render(request, 'article/search.html', locals())
     return HttpResponse("页面出错")
