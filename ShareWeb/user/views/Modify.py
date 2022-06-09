@@ -21,13 +21,11 @@ def Modify(request):
     if request.method == "GET":
         cur_user_name = request.session['user_name']
         cur_user = My_User.objects.get(user_name=cur_user_name)
+        cur_user_images = My_image.objects.get(user=cur_user)
         # print(cur_user)
         cur_user_account = cur_user.user_account
         form = Register_Form()
-        value = { 'user_account':cur_user_account, 
-                  'user_name':cur_user_name,
-                  'form':form  }
-        return render(request,'user/user_modify.html',context=value)
+        return render(request,'user/user_modify.html',locals())
     elif request.method == "POST":
         cur_user_name = request.session['user_name']
         cur_user = My_User.objects.get(user_name=cur_user_name)
