@@ -12,8 +12,12 @@
             <button type="submit" id="but1" >搜索</button>
         </form> 
         
-        <div class="a_div"><a href="" target="_blank">关于</a></div>
+        <div class="a_div"><a href="https://github.com/liwj-caiji/ShareWeb" target="_blank">关于</a></div>
+        {% if request.session.user_name %}
+        <div class="a_div"><a href="{% url 'user_logout' %}" target="_blank">登出</a></div>
+        {% else %}
         <div class="a_div"><a href="" target="_blank">登录</a></div>
+        {% endif %}
         <div class="a_div"><a href="" target="_blank">首页</a></div>
         <div class="a_div"><a href="" target="_blank"></a></div>
 

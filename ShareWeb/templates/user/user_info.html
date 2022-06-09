@@ -12,15 +12,29 @@
                 {{cur_user_name}}
             </div>
             <div class="info-item">
-            用户账号 {{cur_user_account}}
+                用户账号 
+                {{cur_user_account}}
             </div>
+            
             <div class="info-item">
-            <a href="">修改信息</a>    
+                <a href="{% url 'user_modify' %}">修改信息</a>    
             </div>
-            <div class="info-content">
-            </div>
-
         </div>
+        <div class="info-content">
+            <div class="info-content-item">
+                文章列表
+            </div>
+            {%for article in cur_user_article_list%}
+            <div class="info-content-item">
+                <a href="{% url 'article_read' cur_user_name article.title %}  ">{{article.title}}</a>
+            </div>
+            {% endfor%}
+            <div class="info-content-item">
+                更多
+            </div>
+        </div>
+        
     </div>
+
 </div>
 {% endblock content %}

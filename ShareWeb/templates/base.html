@@ -11,15 +11,12 @@
     <!-- <link rel="stylesheet" href="{% static 'css/user/user_register.css' %}"> -->
 
 </head>
-{% if has_login %}
-<body style="background: url({{background_url}})">
-{% else %}
 <body style="background: url(https://liwj253-img.oss-cn-beijing.aliyuncs.com/th.jfif);background-attachment: fixed;
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
 opacity: 0.8;"> 
-{% endif %}
+
 <!-- 引入导航栏 -->
 {% include 'header.html' %}
 

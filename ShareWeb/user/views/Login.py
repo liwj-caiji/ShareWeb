@@ -16,11 +16,11 @@ def Login(request):
         #如果不是第一次登录，在服务器端session有记录
         #重定向
         if 'user_name' in request.session:
-            return render(request,"test.html")
+            return redirect(reverse('user_info'))
         #检查cookie
         if 'user_name' in request.COOKIES:
             request.session['user_name'] = request.COOKIES['user_name']
-            return render(request,"test.html")
+            return redirect(reverse('user_info'))
         form = user_forms.Login_Form()
         return render(request, "user/user_login.html", locals())
 

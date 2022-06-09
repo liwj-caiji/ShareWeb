@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.template import loader 
 from django import forms
 
+from article.models import *
 from user.decoration import *
 from user.models import *
 # Create your views here.
@@ -14,6 +15,7 @@ from user.models import *
 @check_login
 def Info(request):
     cur_user_name = request.session['user_name']
+    has_login = True
     try:
         cur_user = My_User.objects.get(user_name=cur_user_name)
         cur_user_account = cur_user.user_account
@@ -23,6 +25,9 @@ def Info(request):
             cur_user_images = cur_user_images_list[0]
         else:
             cur_user_images = None
+        cur_user_article_list = My_Article.objects.filter(author=cur_user)
+        cur_user_article_list = cur_user_article_list[:3]
+        print(cur_user_article_list)
         return render(request,'user/user_info.html',locals()) 
     except Exception as e:
         return HttpResponse("当前用户信息不存在")
