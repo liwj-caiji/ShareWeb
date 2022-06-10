@@ -13,23 +13,26 @@ from user.models import *
 #     html = temp.render({'name':'lwj'})
 #     return HttpResponse(html)
 
+#查看用户信息需要登录
 @check_login
 def Info(request):
+    #从session中获取用户名
     cur_user_name = request.session['user_name']
-    has_login = True
     try:
+    #根据用户名获取用户信息
+    #get失败会抛出异常
         cur_user = My_User.objects.get(user_name=cur_user_name)
         cur_user_account = cur_user.user_account
+    #获取用户上传的图片
         cur_user_images_list = My_image.objects.filter(user=cur_user)
-        print('here')
         if cur_user_images_list:
             cur_user_images = cur_user_images_list[0]
         else:
             cur_user_images = None
         cur_user_article_list = My_Article.objects.filter(author=cur_user)
         cur_user_article_list = cur_user_article_list[:3]
-        cur_user_images_background_url = settings.MEDIA_ROOT + cur_user_images.background_image.url
-        print(cur_user_images_background_url)
+        # cur_user_images_background_url = settings.MEDIA_ROOT + cur_user_images.background_image.url
+        # print(cur_user_images_background_url)
         print(cur_user_article_list)
         return render(request,'user/user_info.html',locals()) 
     except Exception as e:
@@ -38,20 +41,3 @@ def Info(request):
 
 def test_url(request):
     return render(request,'test.html')
-
-
-#表单
-# class Login_Form(forms.Form):
-#     user_name = forms.CharField(label="用户名", min_length=3, max_length=10)
-#     user_account = forms.CharField(label="用户账号", min_length=3, max_length=10)
-#     password = forms.CharField(label="密码", min_length=6, max_length=10)
-
-# def Login(request):
-#     if(request.method) == "POST":
-#         form = Login_Form(request.POST)
-#         if form.is_valid():
-#             return HttpResponse("嘿嘿嘿")
-#     else:
-#         form = Login_Form()
-#         #remeber = "<p>记住用户名: <input type=\"checkbox\" name=\"isSaved\"></p>"
-#     return render(request, "user/user_login.html", locals())

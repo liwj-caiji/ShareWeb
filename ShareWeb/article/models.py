@@ -13,6 +13,7 @@ class My_Article(models.Model):
     updated_time = models.DateTimeField( auto_now=True )
 
     class Meta:
+        #默认排序为创建时间
         ordering = ['-created_time']
     
     def __str__(self):

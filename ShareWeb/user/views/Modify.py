@@ -36,6 +36,7 @@ def Modify(request):
     elif request.method == "POST":
         cur_user_name = request.session['user_name']
         cur_user = My_User.objects.get(user_name=cur_user_name)
+
     #获取表单中的密码信息
         old_password = request.POST['password']
         new_password = request.POST['password_new']
@@ -73,24 +74,38 @@ def Modify(request):
         # background_save_name = cur_user_name + background_image.name
         # background_save_path = '%s/images/background/%s'(settings.MEDIA_ROOT, background_save_name)
 
+        #获取用户的图片信息
         try:
             user_image = My_image.objects.get(user=cur_user)
-            if avatar_image:
+            #如果用户已经有头像文件,则将之前的删除,保存新的
+            
+            if avatar_image :
                 delete_path = os.path.join(settings.MEDIA_ROOT) + user_image.avatar_image.url
-                os.remove(delete_path)
+                print(user_image.avatar_image.url)
+                #如果用户头像是默认头像则不删除
+                if user_image.avatar_image.url == u'/images/icon/logo1.png':
+                    pass
+                else:
+                    os.remove(delete_path)
                 user_image.avatar_image = avatar_image
-            if background_image:
-                delete_path = os.path.join(settings.MEDIA_ROOT) + user_image.background_image.url
-                os.remove(delete_path)
-                user_image.background_image = background_image
+
+            # if background_image:
+            #     delete_path = os.path.join(settings.MEDIA_ROOT) + user_image.background_image.url
+            #     os.remove(delete_path)
+            #     user_image.background_image = background_image
+
+            #将保存的图片写回数据库
             user_image.save()
             print("修改用户信息成功")
-            return redirect(reverse('user_info'))
-        except Exception as e:
-            user_image = My_image.objects.create(avatar_image = avatar_image,background_image = background_image,user=cur_user)
-            return redirect(reverse('user_info'))
-        return HttpResponse("结束")
 
+            #重定向到用户信息界面
+            return redirect(reverse('user_info'))
+
+        except Exception as e:
+            #如果用户不存在相联的My_image对象,即get方法抛出异常
+            #则create对应的My_image对象
+            user_image = My_image.objects.create(avatar_image = avatar_image,user=cur_user)
+            return redirect(reverse('user_info'))
 
 
 

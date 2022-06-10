@@ -13,4 +13,5 @@ class My_User(models.Model):
 class My_image(models.Model):
     avatar_image = models.ImageField(upload_to="images/avatar" ,default="images/icon/logo1.png")
     background_image = models.ImageField(upload_to="images/background" ,default="images/icon/logo2.png")
+    #用户与图片信息一一对应
     user = models.OneToOneField( My_User, on_delete=models.CASCADE)

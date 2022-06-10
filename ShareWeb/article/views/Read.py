@@ -5,9 +5,9 @@ from django.urls import reverse
 
 from article.models import *
 
+#接收两个参数来唯一确定访问的article
 def article_Read(request, article_author, article_title):
-    print(article_author)
-    print(article_title)
+    #filter方法在不存在对象时返回空列表,不抛出异常
     article_list = My_Article.objects.filter(title=article_title,author_name=article_author)
     if not article_list:
         return HttpResponse("当前文章不存在")
