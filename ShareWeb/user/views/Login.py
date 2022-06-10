@@ -15,10 +15,13 @@ def Login(request):
     if (request.method) == 'GET':
         #如果不是第一次登录，在服务器端session有记录
         #重定向
+        print("在这？")
         if 'user_name' in request.session:
+            print("qiguai")
             return redirect(reverse('user_info'))
         #检查cookie
         if 'user_name' in request.COOKIES:
+            print("你在这？")
             request.session['user_name'] = request.COOKIES['user_name']
             return redirect(reverse('user_info'))
         form = user_forms.Login_Form()
@@ -46,14 +49,14 @@ def Login(request):
             error = '当前用户不存在或密码错误'
             return render(request,'user/user_login.html', locals())
         
-        # response = HttpResponseRedirect("/user/info")
+        response = HttpResponseRedirect("/user/info")
         #getlist获取checkbox的内容
         #勾选了则可以获取到remeber的值为on
         if 'on' in request.POST.getlist('remeber'):
-            request.set_cookie('user_name',cur_user_name,60*60)
+            response.set_cookie('user_name',cur_user_name,60*60)
             
         print(request.COOKIES.get('user_name'))
         request.session['user_name'] = cur_user_name
     
-        return redirect(reverse('user_info'))
+        return response
 

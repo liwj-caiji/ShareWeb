@@ -51,7 +51,9 @@ def Register(request):
             return render(request, "user/user_register.html", locals())
         except Exception as e:
         #用户名和用户账号都可用则创建用户，重定向到登陆界面
+            
             new_user = My_User.objects.create( user_name = reg_user_name, user_account = reg_user_account, password = encrypt_password )
+            new_user_image = My_image.objects.create( user=new_user)
             form = Login_Form()
             return redirect(reverse("user_login"))
 

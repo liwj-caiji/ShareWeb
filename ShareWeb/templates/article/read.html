@@ -3,11 +3,11 @@
 {% block content %}
 
 <div class="read-div">
-    <h1 >{{article.title}}</h1>
-    <h2  style="display: inline-block;">{{article.author_name}}</h2>
-    <span>{{article.created_time}}</span>   
+    <h1 style="text-align:center;"> {{article.title}}</h1>
+    <h2  style="text-align:center;">{{article.author_name}}</h2>
+    <p style="text-align:center;">{{article.created_time}}</p>   
     
-    <p>{{article.body}}</p>
+    <pre>{{article.body}}</pre>
        
 </div>
 

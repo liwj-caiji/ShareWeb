@@ -18,7 +18,7 @@ def article_Create(request):
         if not cur_user:
             return HttpResponse("当前登录信息有误")
         My_Article.objects.create( title=new_article_title, body=new_article_body, author_name=cur_user_name, author=cur_user[0])
-        return redirect(reverse("article_list"))
+        return redirect(reverse("article_list",kwargs={'article_author':cur_user_name}))
     # 如果用户请求获取数据
     else:
         form = article_forms.Article_Create_Form()

@@ -1,38 +1,38 @@
 {% extends "base.html" %} {% load static %}
 {% block title %} 写文章 {% endblock title %}
 {% block content %}
-
-{% for article in page %}
-
-    <h4 class="card-title">{{ article.title }}</h4>
+<div class="list-container">
+  <div class="list-page">
+    {% for article in page %}
+    <h4>{{ article.title }}</h4>
     <span class="card-text">{{ article.body|slice:'10' }}...</span>
     <a href="{% url 'article_read' article.author_name  article.title %}" class="card-link">阅读本文</a>
-    <small class="col align-self-end" style="color: gray;"></small>
-{% endfor %}
+    {% endfor %}
+  </div>
+  <div class="list-index">
+    {% if page.has_previous %}
+    {# 得到上一页的页码编号 #}
+    <a href="{% url 'article_list'  article_author %}?page={{page.previous_page_number}}">上一页</a>
+    {% else %}
+    无上一页
+    {% endif %}
 
 
-{% if page.has_previous %}
-{# 得到上一页的页码编号 #}
-  <a href="{% url 'article_list'  article_author %}?page={{page.previous_page_number}}">上一页</a>
-{% else %}
-无上一页
-{% endif %}
-
-
-{% for p_index in article_paginator.page_range %}
+    {% for p_index in article_paginator.page_range %}
     {# 如果页面编号等于当前页码序号 #}
-    {% if p_index == page.number %} 
-        {{ p_index }}
+    {% if p_index == page.number %}
+    {{ p_index }}
     {% else %}
     {# 否则跳转到页码相对应的页面 #}
-        <a href="{% url 'article_list' article_author %}?page={{p_index}}">{{ p_index }}</a>
+    <a href="{% url 'article_list' article_author %}?page={{p_index}}">{{ p_index }}</a>
     {% endif %}
-{% endfor %}
+    {% endfor %}
 
-{% if page.has_next %}
-  <a href="{% url 'article_list' article_author %}?page={{page.next_page_number}}">下一页</a>
-{% else %}
-无下一页
-{% endif %}
-
-{% endblock content %} 
+    {% if page.has_next %}
+    <a href="{% url 'article_list' article_author %}?page={{page.next_page_number}}">下一页</a>
+    {% else %}
+    无下一页
+    {% endif %}
+  </div>
+  </div>
+  {% endblock content %}

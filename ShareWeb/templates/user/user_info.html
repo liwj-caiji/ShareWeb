@@ -17,7 +17,10 @@
             </div>
             
             <div class="info-item">
-                <a href="{% url 'user_modify' %}">修改信息</a>    
+                <a class="info-a" href="{% url 'user_modify' %}">修改信息</a>    
+            </div>
+            <div class="info-item">
+                <a class="info-a" href="{% url 'article_create' %}">写一篇</a>    
             </div>
         </div>
         <div class="info-content">
@@ -27,10 +30,11 @@
             {%for article in cur_user_article_list%}
             <div class="info-content-item">
                 <a class="info-a" href="{% url 'article_read' cur_user_name article.title %}  ">{{article.title}}</a>
+                &emsp;&emsp;&emsp; <a class="info-a" href="{% url 'article_modify' cur_user_name article.title %}  ">修改</a>
             </div>
             {% endfor%}
             <div class="info-content-item">
-                更多
+                <a class="info-a" href="{% url 'article_list' cur_user_name %}">更多</a>
             </div>
         </div>
         

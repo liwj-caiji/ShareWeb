@@ -5,20 +5,23 @@
 <!-- 写入 base.html 中定义的 content -->
 {% block content %}
 <!-- 写文章表单 -->
-<div class="container">
-    <div class="row">
-        <div class="col-12">
+<div class="create-container">
             <br>
             <!-- 提交文章的表单 -->
             <form method="post" action="">
                 <!-- Django中需要POST数据的地方都必须有csrf_token -->
                 {% csrf_token %}
                 <!-- 文章标题 -->
+                <div class="create-title">
                 {{form.title}}
+                </div>
                 <!-- 文章正文 -->
+                <div class="create-body">
                 {{form.body}}
+                <button type="submit" >完成</button>
+                </div>
                 <!-- 提交按钮 -->
-                <button type="submit" class="btn btn-primary">完成</button>
+                
             </form>
         </div>
     </div>

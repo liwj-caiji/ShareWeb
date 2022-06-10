@@ -36,19 +36,23 @@ def article_Modify(request, article_author, article_title):
                 error = "标题重复"
             #如果下面抛出异常,则说明保存失败,要保存的标题重复
                 article.save()
-                return redirect(reverse('article_list'))
             except Exception as e:
                 if not error:
                     return HttpResponse("修改失败")  
                 else:
                     return HttpResponse(error)
+            else:
+                url = reverse('article_list', kwargs={'article_author':article.author_name}) 
+                return redirect(url)
+
         else:
             try:
                 error = "文章不存在"
                 article = My_Article.objects.get(title=article_title,author_name=article_author)
                 error = "删除失败"
                 article.delete()
-                return redirect(reverse('article_list'))
+                url = reverse('article_list', kwargs={'article_author':article.author_name})
+                return redirect(url)
             except Exception as e:
                 return HttpResponse(error)
         

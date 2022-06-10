@@ -1,0 +1,33 @@
+.create-container{
+    position:absolute;
+    /* background-color: rgb(125, 36, 134); */
+    border-radius: 30px;
+    margin-top: 10vh;
+    margin-left: 10vw;
+    width: 80vw;
+    height:  80vh;
+    opacity: 0.8;
+    padding-top: 0;
+}
+
+.create-title{
+    position:absolute;
+    /* background-color: rgb(124, 109, 125); */
+    margin-top: 0;
+    margin-left: 20vw;
+    width: 60vw;
+    opacity: 0.8;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+.create-body{
+    position:absolute;
+    /* background-color: rgb(124, 109, 125); */
+    border-radius: 30px;
+    margin-top: 10vh;
+    margin-left: 20vw;
+    width: 80vw;
+    height:  70vh;
+    opacity: 0.8;
+}
