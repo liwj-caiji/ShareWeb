@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',    #数据库引擎
         'NAME': 'django_share',  #数据库名
         'USER': 'root',   #账户名
-        'PASSWORD': 'Cyh040328', #密码
+        'PASSWORD': 'root', #密码
         'HOST': 'localhost', #主机
         'PORT': '3306', #端口
     }
