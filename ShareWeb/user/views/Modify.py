@@ -19,41 +19,60 @@ import os
 @check_login
 def Modify(request):
     if request.method == "GET":
+    #根据request的session获取用户名
         cur_user_name = request.session['user_name']
+
+    #获取对应的用户信息,由于经过了装饰器的判定,因此该get方法没有try
         cur_user = My_User.objects.get(user_name=cur_user_name)
+
+    #注册时每个用户设置了默认的My_image
         cur_user_images = My_image.objects.get(user=cur_user)
-        # print(cur_user)
         cur_user_account = cur_user.user_account
+
+    #返回表单,用户信息通过locals()形成的字典填充
         form = Register_Form()
         return render(request,'user/user_modify.html',locals())
+
     elif request.method == "POST":
         cur_user_name = request.session['user_name']
         cur_user = My_User.objects.get(user_name=cur_user_name)
+    #获取表单中的密码信息
         old_password = request.POST['password']
         new_password = request.POST['password_new']
+    
+    #修改原密码需要输入原密码
         if new_password and not old_password:
             return HttpResponse("修改密码需要输入原密码")
+    
+    #修改密码时对密码进行验证
         if new_password and old_password:
+        #验证通过
             if check_password(old_password,cur_user.password):
+            #加密算法的选择与注册时一致
                 cur_user.password = make_password( new_password, None, 'pbkdf2_sha256' )
+            #调用save方法将修改写回数据库
                 cur_user.save()
             else:
                 return HttpResponse("密码错误")
+    
+    #获取表单中的信息
         new_user_name = request.POST['user_name']
         new_user_account = request.POST['user_account']
 
-        print(cur_user)
+    #获取头像文件
         avatar_image = request.FILES.get('avatar_image')
-        background_image = request.FILES.get('background_image')
         if avatar_image:
             avatar_image.name = cur_user.user_name + '-' + avatar_image.name
-        if background_image:
-            background_image.name = cur_user.user_name + '-' + background_image.name
+            
+        # background_image = request.FILES.get('background_image')
+        # if background_image:
+        #     background_image.name = cur_user.user_name + '-' + background_image.name
+        
         # avatart_save_name = cur_user_name + avatar_image.name
         # avatar_save_path = '%s/images/avatar/%s'(settings.MEDIA_ROOT, avatart_save_name)
-
         # background_save_name = cur_user_name + background_image.name
         # background_save_path = '%s/images/background/%s'(settings.MEDIA_ROOT, background_save_name)
+
         try:
             user_image = My_image.objects.get(user=cur_user)
             if avatar_image:

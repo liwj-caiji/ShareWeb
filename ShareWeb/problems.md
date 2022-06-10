@@ -28,3 +28,6 @@
 
 9. 搜索页面的header处超链接无法点击
 解决办法 : 更改search-body的大小，无法点击是search-body覆盖了header
+
+10. 用上传的背景图片替换默认背景 background: url( {% static 'media' %} {{cur_user_images.avatar_image.url}})该写法不行
+                                           url('{{cur_user_images_background_url}}')也不行 

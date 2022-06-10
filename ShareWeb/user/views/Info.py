@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader 
@@ -27,6 +28,8 @@ def Info(request):
             cur_user_images = None
         cur_user_article_list = My_Article.objects.filter(author=cur_user)
         cur_user_article_list = cur_user_article_list[:3]
+        cur_user_images_background_url = settings.MEDIA_ROOT + cur_user_images.background_image.url
+        print(cur_user_images_background_url)
         print(cur_user_article_list)
         return render(request,'user/user_info.html',locals()) 
     except Exception as e:
