@@ -16,4 +16,6 @@ python3 manage.py runserver 0.0.0.0:8000
 ```
 上述代码成功运行则浏览器访问127.0.0.1:8000/user/login即可
 
-<a href="http://www.lwjcyh.com:8000/user/login">样例</a>
+前端页面手写的,有点点不太美观,不过勉强还能看,关于写项目时遇到的部分问题记录在problems.md
+
+<a href="http://www.lwjcyh.com:8000/user/login" target="_blank">样例</a>
