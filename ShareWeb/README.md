@@ -18,4 +18,19 @@ python3 manage.py runserver 0.0.0.0:8000
 
 前端页面手写的,有点点不太美观,不过勉强还能看,关于写项目时遇到的部分问题记录在problems.md
 
+## 项目目录设计
+本项目基于django框架实现,前后端未分离,包含的app有user和article
+各app目录下文件的内容:
+- urls.py 路由信息
+- view 视图函数实现
+- models.py 模型信息
+- *_form.py 表单信息
+- decoration.py 装饰器
+- migrations 数据库迁移信息
+
+static目录下的是静态文件,包含CSS和Js(包含collectstatic的结果)
+templates 放置模板信息
+
 <a href="http://www.lwjcyh.com:8000/user/login" target="_blank">样例</a>
+
+<a href="http://c.biancheng.net/django/" target="_blank"> 适合入门的django教程</a>
